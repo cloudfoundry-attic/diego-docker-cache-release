@@ -1,0 +1,25 @@
+---
+packages:
+- name: docker-1.3.1
+  version: 35dc3e47000e48570884a2c8ae2e9410d0c28655
+  sha1: 5b8fb89dbe055262da90749a6ca3736afdeb6a4d
+  fingerprint: 35dc3e47000e48570884a2c8ae2e9410d0c28655
+  dependencies: []
+- name: docker-registry-0.8.1
+  version: e6e70cf56c82de5b69d1e020e8f37ae52586766d
+  sha1: 5c26cd7002ee3d2fb2e215c8d449e23505122e61
+  fingerprint: e6e70cf56c82de5b69d1e020e8f37ae52586766d
+  dependencies: []
+jobs:
+- name: docker
+  version: 75871f05f5098215799e3bfb5a771ed328fd36fe
+  fingerprint: 75871f05f5098215799e3bfb5a771ed328fd36fe
+  sha1: 694c982aa7c8b1e33332e998a7c5d81a7621e12a
+- name: docker-registry
+  version: a18d95b6926eac06c3031e867c4bc5b4c8365f83
+  fingerprint: a18d95b6926eac06c3031e867c4bc5b4c8365f83
+  sha1: 5b5385d24736b9ab6378eb2aee35907148cbb660
+commit_hash: 5db14a27
+uncommitted_changes: true
+name: docker-registry-release
+version: '1'

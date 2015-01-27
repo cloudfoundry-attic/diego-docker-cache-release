@@ -1,0 +1,5 @@
+check process docker
+  with pidfile /var/vcap/sys/run/docker/docker.pid
+  start program "/var/vcap/jobs/docker/bin/ctl start"
+  stop program "/var/vcap/jobs/docker/bin/ctl stop"
+  group vcap

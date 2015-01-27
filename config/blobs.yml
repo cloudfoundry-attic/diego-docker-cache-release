@@ -1,0 +1,9 @@
+---
+docker/docker-1.3.1:
+  object_id: 7c411ad3-702b-4b94-a769-503846c1edb9
+  sha: dd28ac35bb59e2c97399d4c0e613c6c2b64b2b94
+  size: 14155072
+docker-registry/docker-registry-0.8.1.tar.gz:
+  object_id: 626ef5a8-abe6-4215-b6fe-f2716a503676
+  sha: 1fac036c00f048f2627de5460485c308834cb047
+  size: 414045184

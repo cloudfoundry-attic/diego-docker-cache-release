@@ -1,0 +1,17 @@
+---
+name: docker-registry
+
+templates:
+  ctl.erb: bin/ctl
+
+packages:
+  - docker-1.3.1
+  - docker-registry-0.8.1
+
+properties:
+  aws_iam_id:
+    description: 'iam key'
+  aws_iam_secret:
+      description: 'iam secret'
+  docker_registry_s3_bucket:
+      description: 'docker-registry s3 bucket'
