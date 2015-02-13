@@ -22,8 +22,16 @@ jobs:
     - name: docker-registry
     resource_pool: docker-registry
     templates:
+      - name: consul-agent
       - name: docker-registry
       - name: docker
+    properties:
+      consul:
+        agent:
+          services:
+            - docker_registry
+          servers:
+            lan: 10.244.16.6 
 
 networks:
   - name: docker-registry

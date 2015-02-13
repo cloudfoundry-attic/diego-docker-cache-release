@@ -7,3 +7,7 @@ docker-registry/docker-registry-0.8.1.tar.gz:
   object_id: 626ef5a8-abe6-4215-b6fe-f2716a503676
   sha: 1fac036c00f048f2627de5460485c308834cb047
   size: 414045184
+consul/consul-0.4:
+  object_id: 66ef138b-ac9b-47cb-bead-e506db35a3cd
+  sha: 8be7984e9e1b7aab3d1eee14acdf59bb62207b6c
+  size: 16085929
