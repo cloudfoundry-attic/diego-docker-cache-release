@@ -1,11 +1,10 @@
 ---
 name: docker-registry-release
 
-# replace with bosh status --uuid
-director_uuid: c6f166bd-ddac-4f7d-9c57-d11c6ad5133b
+director_uuid: <%= `bosh status --uuid` %>
 
 releases:
-  - name: docker-registry-release
+  - name: docker-registry
     version: latest
 
 compilation:
@@ -23,15 +22,15 @@ jobs:
     resource_pool: docker-registry
     templates:
       - name: consul-agent
-      - name: docker-registry
       - name: docker
+      - name: docker-registry
     properties:
       consul:
         agent:
           services:
             - docker_registry
           servers:
-            lan: 10.244.16.6 
+            lan: [10.244.16.6] 
 
 networks:
   - name: docker-registry
