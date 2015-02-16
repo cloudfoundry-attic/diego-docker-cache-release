@@ -1,4 +1,4 @@
 properties:
   diego:
     stager:
-      docker_registry_url: "http://10.244.2.6:5000"
+      docker_registry_url: "http://10.244.2.6:8080"

@@ -1,14 +1,15 @@
 ---
-name: docker
+name: docker_registry
 
 templates:
-  ctl.sh: bin/ctl
-  cgroups-mount.sh: bin/cgroups-mount
+  ctl.erb: bin/ctl
+  dns_health_check.erb: bin/dns_health_check
 
 packages:
-  - docker-1.3.1
+  - docker-registry-0.8.1
 
 properties:
   docker_registry.address:
     description: "Address of interface on which to serve"
     default: "0.0.0.0:8080"
+

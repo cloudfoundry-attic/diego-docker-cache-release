@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-JOB_NAME=docker-registry
+JOB_NAME=docker_registry
 BASE_DIR=/var/vcap
 
 LOG_DIR=$BASE_DIR/sys/log/$JOB_NAME
@@ -36,7 +36,7 @@ start)
     -e STORAGE_PATH=/registry \
     -e SEARCH_BACKEND=sqlalchemy \
     -e DOCKER_REGISTRY_CONFIG=/docker-registry/config/config_sample.yml \
-    -p 5000:5000 \
+    -p <%= p("docker_registry.address").split(":")[1] %>:5000 \
     -v $REGISTRY_STORAGE:/registry \
     registry:private \
     docker-registry

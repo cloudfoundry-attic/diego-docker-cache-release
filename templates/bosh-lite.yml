@@ -14,7 +14,7 @@ compilation:
     name: docker-registry-subnet
 
 jobs:
-  - name: docker-registry
+  - name: docker_registry
     instances: 1
     persistent_disk: 10240
     networks:
@@ -23,7 +23,7 @@ jobs:
     templates:
       - name: consul-agent
       - name: docker
-      - name: docker-registry
+      - name: docker_registry
     properties:
       consul:
         agent:

@@ -29,7 +29,7 @@ case $1 in
       -p $PIDFILE \
       -g $DOCKER_DATA_DIR \
       -mtu 1500 \
-      --insecure-registry=localhost:5000 \
+      --insecure-registry=localhost:<%= p("docker_registry.address").split(":")[1] %> \
       1>>$LOG_DIR/docker.stdout.log \
       2>>$LOG_DIR/docker.stderr.log
 
