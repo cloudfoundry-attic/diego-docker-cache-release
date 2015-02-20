@@ -7,6 +7,7 @@ BOSH release for Docker Registry
 
 1. When generating the Diego's manifest (step 9) use the following set of files instead: 
 
+        cd ~/workspace/diego-release
         ./scripts/generate-deployment-manifest bosh-lite ../cf-release \
              ~/deployments/bosh-lite/director.yml \
              ~/workspace/docker-registry-release/templates/diego-docker-registry-stub.yml > \
