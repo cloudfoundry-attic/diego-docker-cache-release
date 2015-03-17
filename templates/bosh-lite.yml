@@ -30,7 +30,7 @@ jobs:
           services:
             - docker_registry
           servers:
-            lan: [10.244.16.6] 
+            lan: [10.244.0.54] 
 
 networks:
   - name: docker-registry
