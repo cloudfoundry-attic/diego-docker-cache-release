@@ -10,6 +10,7 @@ BOSH release for Docker Registry
         cd ~/workspace/diego-release
         ./scripts/generate-deployment-manifest bosh-lite ../cf-release \
              ~/deployments/bosh-lite/director.yml \
+             ~/workspace/diego-release/templates/enable_diego_docker_in_cc.yml \
              ~/workspace/docker-registry-release/templates/diego-docker-registry-stub.yml > \
              ~/deployments/bosh-lite/diego.yml
 
