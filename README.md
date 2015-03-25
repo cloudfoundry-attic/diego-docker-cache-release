@@ -12,6 +12,7 @@ BOSH release for Docker Registry
              ~/deployments/bosh-lite/director.yml \
              ~/workspace/docker-registry-release/templates/diego-docker-registry-stub.yml > \
              ~/deployments/bosh-lite/diego.yml
+        bosh deployment ~/deployments/bosh-lite/diego.yml
 
 1. Deploy Diego
 1. Deploy this Docker Registry:
