@@ -2,3 +2,7 @@ properties:
   diego:
     stager:
       docker_registry_url: "http://docker_registry.service.consul:8080"
+    garden-linux:
+      insecure_docker_registry_list: ["10.244.2.6:8080"]
+    executor:
+      allow_privileged: true 
