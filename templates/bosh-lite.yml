@@ -28,7 +28,7 @@ jobs:
       consul:
         agent:
           services:
-            - docker_registry
+            - docker-registry
           servers:
             lan: [10.244.0.54] 
 
