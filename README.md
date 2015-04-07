@@ -3,17 +3,19 @@ BOSH release for Docker Registry
 
 ## Deploying to a local BOSH-Lite instance
 
-### New deployment
-
 1. Follow the instructions in [Diego Release](https://github.com/cloudfoundry-incubator/diego-release) and install CF
 
 1. When generating the Diego's manifest (step 9) use the following set of files instead: 
 
         cd ~/workspace/diego-release
-        ./scripts/generate-deployment-manifest bosh-lite ../cf-release \
-             ~/deployments/bosh-lite/director.yml \
-             ~/workspace/docker-registry-release/templates/diego-docker-registry-stub.yml > \
-             ~/deployments/bosh-lite/diego.yml
+        ./scripts/generate-deployment-manifest \
+          ~/deployments/bosh-lite/director.yml \
+          ~/workspace/docker-registry-release/stubs-for-diego-release/bosh-lite-property-overrides.yml \
+          manifest-generation/bosh-lite-stubs/instance-count-overrides.yml \
+          manifest-generation/bosh-lite-stubs/persistent-disk-overrides.yml \
+          manifest-generation/bosh-lite-stubs/iaas-settings.yml \
+          ~/deployments/bosh-lite \
+          > ~/deployments/bosh-lite/diego.yml
         bosh deployment ~/deployments/bosh-lite/diego.yml
 
 1. Deploy Diego:
@@ -27,28 +29,6 @@ BOSH release for Docker Registry
         cd ~/workspace/docker-registry-release
         bosh -d templates/bosh-lite.yml deploy 
 
-### Add-on deployment
-
-1. Regenerate Diego's manifest:
- 
-        cd ~/workspace/diego-release
-        ./scripts/generate-deployment-manifest bosh-lite ../cf-release \
-             ~/deployments/bosh-lite/director.yml \
-             ~/workspace/docker-registry-release/templates/diego-docker-registry-stub.yml > \
-             ~/deployments/bosh-lite/diego.yml
-        bosh deployment ~/deployments/bosh-lite/diego.yml
-
-1. Deploy Diego:
- 
-        bosh create release --force
-        bosh -n upload release
-        bosh -n deploy
-
-1. Deploy the Docker Registry:
-
-        cd ~/workspace/docker-registry-release
-        bosh -d templates/bosh-lite.yml deploy
-        
 ## Caching docker image with Diego
 
 1. Install CF CLI v6.10.0+ (or follow the guide in [Migrating to Diego](https://github.com/cloudfoundry-incubator/diego-design-notes/blob/master/migrating-to-diego.md#installing-the-diego-beta-cli-plugin))
