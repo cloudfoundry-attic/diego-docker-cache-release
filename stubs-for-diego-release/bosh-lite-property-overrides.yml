@@ -1,6 +1,7 @@
+---
 property_overrides:
   stager:
-    docker_registry_url: "http://docker_registry.service.consul:8080"
+    docker_registry_url: "http://docker-registry.service.consul:8080"
   executor:
     allow_privileged: true
     drain_timeout_in_seconds: 0
