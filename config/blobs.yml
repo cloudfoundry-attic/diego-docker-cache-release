@@ -11,3 +11,13 @@ consul/consul-0.4:
   object_id: 66ef138b-ac9b-47cb-bead-e506db35a3cd
   sha: 8be7984e9e1b7aab3d1eee14acdf59bb62207b6c
   size: 16085929
+cf-cli/cf-linux-amd64.tgz:
+  object_id: fddbf16b-5036-4298-958b-bd22d670b253
+  sha: !binary |-
+    Zjg0NTgwMDMxMGU0YjcwMmEzOWEyZjExOTFlM2Q3MTg2MjYzMDEwMw==
+  size: 4803309
+golang/go1.4.linux-amd64.tar.gz:
+  object_id: 0bbee9d3-3352-4e26-83e1-34546ffdc4d4
+  sha: !binary |-
+    Y2Q4MmFiY2IwNzM0ZjgyZjdjZjJkNTc2Yzk1MjhjZWJkYWZhYzRjNg==
+  size: 63289725
