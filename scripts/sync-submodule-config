@@ -1,0 +1,13 @@
+#!/bin/bash
+ 
+set -e -x
+
+# ensure gosub is installed (this will recompile it only if necessary)
+go get github.com/vito/gosub
+go install github.com/vito/gosub
+
+{
+  gosub list -test github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/...
+} > /tmp/packages
+
+cat /tmp/packages | xargs gosub sync

@@ -1,0 +1,17 @@
+---
+platform: linux
+
+image: docker:///cloudfoundry/diego-pipeline
+
+inputs:
+  - name: deployments-runtime
+  - name: docker-registry-release
+
+params:
+  BOSH_PASSWORD: ~
+  BOSH_TARGET: ~
+  BOSH_USER: ~
+  DOCKER_REGISTRY_MANIFEST: ~
+
+run:
+  path: docker-registry-release/scripts/ci/deploy_docker_registry
