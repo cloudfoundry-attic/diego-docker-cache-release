@@ -7,6 +7,8 @@ docker_registry_manifest="${PWD}/${DOCKER_REGISTRY_MANIFEST}"
 pushd docker-registry-release
   ./scripts/ci/bosh_setup
 
+  bosh -n cleanup
+
   bosh -n create release
   bosh -n upload release --rebase || true
 
