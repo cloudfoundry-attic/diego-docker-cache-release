@@ -25,3 +25,7 @@ properties:
   acceptance_tests.verbose:
     default: false
     description: Whether to pass the -v flag to cf-acceptance-tests
+  acceptance_tests.docker_executable:
+    description: Path to Docker executable
+  acceptance_tests.docker_parameters:
+    description: Docker executable parameters

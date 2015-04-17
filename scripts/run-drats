@@ -21,7 +21,7 @@ popd
 pushd ~/workspace/docker-registry-release
   bosh create release --force
   bosh -t lite -n upload release
-  bosh -t lite -d ./templates/bosh-lite.yml deploy
+  bosh -t lite -n -d ./templates/bosh-lite.yml deploy
 popd
 
 pushd ~/workspace/docker-registry-release/src/github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/
