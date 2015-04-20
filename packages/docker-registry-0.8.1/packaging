@@ -1,3 +1,0 @@
-set -e
-
-cp -a docker-registry/docker-registry-0.8.1.tar.gz ${BOSH_INSTALL_TARGET}

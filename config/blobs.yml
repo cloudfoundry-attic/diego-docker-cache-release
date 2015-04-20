@@ -13,11 +13,17 @@ consul/consul-0.4:
   size: 16085929
 cf-cli/cf-linux-amd64.tgz:
   object_id: fddbf16b-5036-4298-958b-bd22d670b253
-  sha: !binary |-
-    Zjg0NTgwMDMxMGU0YjcwMmEzOWEyZjExOTFlM2Q3MTg2MjYzMDEwMw==
+  sha: f845800310e4b702a39a2f1191e3d71862630103
   size: 4803309
 golang/go1.4.linux-amd64.tar.gz:
   object_id: 0bbee9d3-3352-4e26-83e1-34546ffdc4d4
-  sha: !binary |-
-    Y2Q4MmFiY2IwNzM0ZjgyZjdjZjJkNTc2Yzk1MjhjZWJkYWZhYzRjNg==
+  sha: cd82abcb0734f82f7cf2d576c9528cebdafac4c6
   size: 63289725
+docker/docker-1.6.0:
+  object_id: 8f44b120-f070-46f8-abad-1e679702411d
+  sha: 1c3d8a2d87bd30567fc1b1cf461d957d504c3ebf
+  size: 15443598
+docker-registry/docker-registry-0.9.1.tar.gz:
+  object_id: a91bc5a2-60db-45a0-be1f-ea0a40f74121
+  sha: ceaf2b3896aa01400b4bd919ef8bf870d7379877
+  size: 150199509

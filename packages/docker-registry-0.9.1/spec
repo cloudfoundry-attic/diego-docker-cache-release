@@ -1,0 +1,7 @@
+---
+name: docker-registry-0.9.1
+
+dependencies: []
+
+files:
+  - docker-registry/docker-registry-0.9.1.tar.gz
