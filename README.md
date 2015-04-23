@@ -50,7 +50,7 @@ See [docker-registry-acceptance-tests](https://github.com/cloudfoundry-incubator
 
         cf docker-push <application_name> <docker_image> --no-start 
    
-1. Enable caching by setting `DIEGO_DOCKER_CACHE` boolen environment variable
+1. Enable caching by setting `DIEGO_DOCKER_CACHE` boolean environment variable
  
         cf set-env <application_name> DIEGO_DOCKER_CACHE true
    
