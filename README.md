@@ -29,6 +29,9 @@ BOSH release for Docker Registry
 
         cd ~/workspace/docker-registry-release
         bosh -d templates/bosh-lite.yml deploy 
+        
+## Running Acceptance Tests
+See [docker-registry-acceptance-tests](https://github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/)
 
 ## Caching docker image with Diego
 
