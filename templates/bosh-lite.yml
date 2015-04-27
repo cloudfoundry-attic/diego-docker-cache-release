@@ -6,6 +6,9 @@ director_uuid: <%= `bosh status --uuid` %>
 releases:
   - name: docker-registry
     version: latest
+  - name: cf
+    version: latest
+
 
 compilation:
   network: docker-registry
@@ -21,9 +24,12 @@ jobs:
     - name: docker-registry
     resource_pool: docker-registry
     templates:
-      - name: consul-agent
+      - name: consul_agent
+        release: cf
       - name: docker
+        release: docker-registry
       - name: docker_registry
+        release: docker-registry
     properties:
       consul:
         agent:
