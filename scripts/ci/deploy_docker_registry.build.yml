@@ -11,7 +11,7 @@ params:
   BOSH_PASSWORD: ~
   BOSH_TARGET: ~
   BOSH_USER: ~
-  DOCKER_REGISTRY_MANIFEST: ~
+  ENVIRONMENT_NAME: ~
 
 run:
   path: docker-registry-release/scripts/ci/deploy_docker_registry
