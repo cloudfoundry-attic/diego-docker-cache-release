@@ -25,10 +25,24 @@ BOSH release for Docker Registry
         bosh -n upload release
         bosh -n deploy
 
-1. Deploy this Docker Registry:
+1. Generate and target Docker Registry's manifest:
 
         cd ~/workspace/docker-registry-release
-        bosh -d templates/bosh-lite.yml deploy 
+        ./scripts/generate-deployment-manifest ~/deployments/bosh-lite/director.yml \
+            manifest-generation/bosh-lite-stubs/property-overrides.yml \
+            manifest-generation/bosh-lite-stubs/instance-count-overrides.yml \
+            manifest-generation/bosh-lite-stubs/persistent-disk-overrides.yml \
+            manifest-generation/bosh-lite-stubs/iaas-settings.yml \
+            manifest-generation/bosh-lite-stubs/additional-jobs.yml \
+            ~/deployments/bosh-lite \
+            > ~/deployments/bosh-lite/docker-registry.yml
+        bosh deployment ~/deployments/bosh-lite/docker-registry.yml
+
+1. Deploy this Docker Registry:
+
+        bosh create release --force
+        bosh -n upload release
+        bosh -n deploy
         
 ## Running Acceptance Tests
 See [docker-registry-acceptance-tests](https://github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/)
