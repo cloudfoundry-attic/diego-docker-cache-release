@@ -11,7 +11,9 @@ params:
   BOSH_PASSWORD: ~
   BOSH_TARGET: ~
   BOSH_USER: ~
+  DATADOG_API_KEY: ~
+  DEPLOYMENTS_DIR: ~
   ENVIRONMENT_NAME: ~
-
+    
 run:
   path: docker-registry-release/scripts/ci/deploy_docker_registry
