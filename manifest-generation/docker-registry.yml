@@ -1,0 +1,74 @@
+name: (( config_from_cf.cf_deployment_name "-docker-registry" ))
+
+releases: (( base_releases additional_jobs.releases ))
+
+compilation:
+  workers: 1
+  network: docker-registry
+  reuse_compilation_vms: true
+  cloud_properties: (( iaas_settings.compilation_cloud_properties ))
+
+update:
+  canaries: 1
+  canary_watch_time: 5000-60000
+  update_watch_time: 5000-60000
+  max_in_flight: 3
+  serial: false
+
+networks:
+  - name: docker-registry
+    type: manual
+    subnets: (( iaas_settings.subnet_configs.docker-registry.subnets ))
+
+resource_pools:
+  - name: docker-registry
+    network: docker-registry
+    stemcell: (( iaas_settings.stemcell ))
+    cloud_properties: (( iaas_settings.resource_pool_cloud_properties.docker-registry.cloud_properties ))
+
+jobs:
+  - name: docker-registry
+    templates: (( base_job_templates.docker-registry additional_jobs.docker-registry ))
+    instances: (( instance_count_overrides.docker-registry.instances || 1 ))
+    persistent_disk: (( persistent_disk_overrides.docker-registry || 10240 ))
+    resource_pool: docker-registry
+    networks:
+      - name: docker-registry
+    update:
+      serial: false
+      max_in_flight: (( instance_count_overrides.docker-registry.max_in_flight || 1 ))
+    properties:
+      consul:
+        agent:
+          services:
+            - docker_registry
+
+properties:
+  # -- Property below is used by the consul_agent job from cf-release --
+  consul:
+    agent:
+      servers:
+        lan: (( config_from_cf.consul.lan_servers ))
+
+# The keys below should not be included in the final stub
+config_from_cf: (( merge ))
+iaas_settings: (( merge ))
+instance_count_overrides: (( merge ))
+persistent_disk_overrides: (( merge ))
+property_overrides: (( merge ))
+additional_jobs:
+  releases: (( merge || [] ))
+  docker-registry: (( merge || [] ))
+base_releases:
+  - name: docker-registry
+    version: latest
+  - name: cf
+    version: latest
+base_job_templates:
+  docker-registry:
+    - name: consul_agent
+      release: cf
+    - name: docker
+      release: docker-registry
+    - name: docker_registry
+      release: docker-registry

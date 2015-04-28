@@ -1,0 +1,25 @@
+config_from_cf:
+  cf_deployment_name: (( name ))
+  cc:
+    external_port: 9022
+    internal_api_password: (( properties.cc.internal_api_password ))
+    srv_api_uri: (( properties.cc.srv_api_uri ))
+    staging_upload_user: (( properties.cc.staging_upload_user ))
+    staging_upload_password: (( properties.cc.staging_upload_password ))
+  consul:
+    lan_servers: (( properties.consul.agent.servers.lan ))
+  system_domain: (( properties.system_domain ))
+
+# The keys below should not be included in the final stub
+name: (( merge ))
+properties:
+  cc:
+    internal_api_password: (( merge ))
+    srv_api_uri: (( merge ))
+    staging_upload_user: (( merge ))
+    staging_upload_password: (( merge ))
+  consul:
+    agent:
+      servers:
+        lan: (( merge ))
+  system_domain: (( merge ))

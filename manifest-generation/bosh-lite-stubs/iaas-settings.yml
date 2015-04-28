@@ -1,0 +1,44 @@
+iaas_settings:
+  stemcell:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+    version: latest
+  subnet_configs:
+    - name: docker-registry
+      type: manual
+      subnets:
+      - cloud_properties:
+          name: docker-registry-0
+        range: 10.244.2.0/30
+        reserved: 
+          - 10.244.2.1
+        static:
+          - 10.244.2.2
+      - cloud_properties:
+          name: docker-registry-1
+        range: 10.244.2.4/30
+        reserved:
+        - 10.244.2.5
+        static: []
+      - cloud_properties:
+          name: docker-registry-2
+        range: 10.244.2.8/30
+        reserved:
+        - 10.244.2.9
+        static: []
+      - cloud_properties:
+          name: docker-registry-3
+        range: 10.244.2.12/30
+        reserved:
+        - 10.244.2.13
+        static: []
+      - cloud_properties:
+          name: docker-registry-4
+        range: 10.244.2.16/30
+        reserved:
+        - 10.244.2.17
+        static: []
+  compilation_cloud_properties: {}
+  resource_pool_cloud_properties:
+    - name: docker-registry 
+      cloud_properties:
+        name: docker-registry-1 

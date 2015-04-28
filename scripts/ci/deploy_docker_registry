@@ -2,17 +2,31 @@
 
 set -e -x -u
 
-docker_registry_manifest="${PWD}/${DOCKER_REGISTRY_MANIFEST}"
+environment_path="${PWD}/${DEPLOYMENTS_DIR}/${ENVIRONMENT_NAME}"
+stubs_path="${environment_path}/stubs"
+templates_path="${environment_path}/templates"
+
+cf_deployment_name="cf-${ENVIRONMENT_NAME}"
 
 pushd docker-registry-release
   ./scripts/ci/bosh_setup
 
   bosh -n cleanup
 
-  bosh -n create release
-  bosh -n upload release --rebase || true
+  bosh download manifest ${cf_deployment_name} > /tmp/cf.yml
+  spiff merge \
+    manifest-generation/misc-templates/iaas-settings.yml \
+    ${templates_path}/docker-registry/iaas-settings-internal.yml \
+    /tmp/cf.yml \
+    > /tmp/iaas-settings.yml
 
-  bosh deployment ${docker_registry_manifest}
-
-  bosh -n deploy
+  ./scripts/generate-deployment-manifest \
+    ${stubs_path}/director-uuid.yml \
+    ${stubs_path}/docker-registry/property-overrides.yml \
+    ${stubs_path}/docker-registry/instance-count-overrides.yml \
+    ${stubs_path}/docker-registry/persistent-disk-overrides.yml \
+    /tmp/iaas-settings.yml \
+    ${stubs_path}/docker-registry/additional-jobs.yml \
+    /tmp \
+    > ../docker-registry-deployment.yml
 popd
