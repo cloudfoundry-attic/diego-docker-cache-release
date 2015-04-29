@@ -5,13 +5,10 @@ set -e -x -u
 environment_path="${PWD}/${DEPLOYMENTS_DIR}/${ENVIRONMENT_NAME}"
 stubs_path="${environment_path}/stubs"
 templates_path="${environment_path}/templates"
-version=`cat version/number`
 
 cf_deployment_name="cf-${ENVIRONMENT_NAME}"
 
 ./docker-registry-release/scripts/ci/bosh_setup
-
-bosh -n cleanup
 
 pushd docker-registry-release
   bosh -n create release --with-tarball --version $version
@@ -20,16 +17,26 @@ pushd docker-registry-release
     manifest-generation/misc-templates/iaas-settings.yml \
     ${templates_path}/docker-registry/iaas-settings-internal.yml \
     ${stubs_path}/aws-resources.yml \
-    > ${tmpdir}/iaas-settings.yml
+    > /tmp/iaas-settings.yml
 
-  bosh download manifest ${cf_deployment_name} > ${tmpdir}/cf.yml
+  bosh download manifest ${cf_deployment_name} > /tmp/cf.yml
 
   ./scripts/generate-deployment-manifest \
     ${stubs_path}/director-uuid.yml \
     ${stubs_path}/docker-registry/property-overrides.yml \
     ${stubs_path}/docker-registry/instance-count-overrides.yml \
     ${stubs_path}/docker-registry/persistent-disk-overrides.yml \
-    ${tmpdir}/iaas-settings.yml \
-    ${tmpdir} \
-    > ${tmpdir}/docker-registry-deployment.yml
+    /tmp/iaas-settings.yml \
+    /tmp \
+    > /tmp/docker-registry-deployment.yml
+
+  bosh deployment /tmp/docker-registry-deployment.yml
+
+  ./scripts/ci/emit-datadog-deploy-event started ${cf_deployment_name} docker-registry
+  if bosh -n deploy; then
+    ./scripts/ci/emit-datadog-deploy-event finished ${cf_deployment_name} docker-registry
+  else
+    ./scripts/ci/emit-datadog-deploy-event failed ${cf_deployment_name} docker-registry
+    exit 1
+  fi
 popd
