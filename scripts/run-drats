@@ -19,6 +19,15 @@ pushd ~/workspace/diego-release
 popd
 
 pushd ~/workspace/docker-registry-release
+  ./scripts/generate-deployment-manifest ~/deployments/bosh-lite/director.yml \
+    manifest-generation/bosh-lite-stubs/property-overrides.yml \
+    manifest-generation/bosh-lite-stubs/instance-count-overrides.yml \
+    manifest-generation/bosh-lite-stubs/persistent-disk-overrides.yml \
+    manifest-generation/bosh-lite-stubs/iaas-settings.yml \
+    manifest-generation/bosh-lite-stubs/additional-jobs.yml \
+    ~/deployments/bosh-lite \
+    > ~/deployments/bosh-lite/docker-registry.yml
+
   bosh create release --force
   bosh -t lite -n upload release
   bosh -t lite -n -d ./templates/bosh-lite.yml deploy
