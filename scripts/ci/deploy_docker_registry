@@ -27,6 +27,7 @@ pushd docker-registry-release
     ${stubs_path}/docker-registry/instance-count-overrides.yml \
     ${stubs_path}/docker-registry/persistent-disk-overrides.yml \
     /tmp/iaas-settings.yml \
+    ${stubs_path}/docker-registry/additional-jobs.yml \
     /tmp \
     > /tmp/docker-registry-deployment.yml
 
