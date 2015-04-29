@@ -15,7 +15,7 @@ pushd ~/workspace/diego-release
 
   bosh create release --force
   bosh -t lite -n upload release
-  bosh -t lite -d  ~/deployments/bosh-lite/diego.yml -n deploy
+  bosh -t lite -n -d ~/deployments/bosh-lite/diego.yml deploy
 popd
 
 pushd ~/workspace/docker-registry-release
@@ -30,7 +30,7 @@ pushd ~/workspace/docker-registry-release
 
   bosh create release --force
   bosh -t lite -n upload release
-  bosh -t lite -n -d ./templates/bosh-lite.yml deploy
+  bosh -t lite -n -d ~/deployments/bosh-lite/docker-registry.yml deploy
 popd
 
 pushd ~/workspace/docker-registry-release/src/github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/
