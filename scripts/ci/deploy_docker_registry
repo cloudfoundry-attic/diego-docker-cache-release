@@ -5,26 +5,25 @@ set -e -x -u
 environment_path="${PWD}/${DEPLOYMENTS_DIR}/${ENVIRONMENT_NAME}"
 stubs_path="${environment_path}/stubs"
 templates_path="${environment_path}/templates"
+version=`cat version/number`
 
 cf_deployment_name="cf-${ENVIRONMENT_NAME}"
-tmpdir=$(mktemp -d /tmp/deploy-docker-registry.XXXXX)
 
 ./docker-registry-release/scripts/ci/bosh_setup
 
 bosh -n cleanup
 
-bosh -n upload stemcell bosh-stemcell/*.tgz --skip-if-exists
-
 pushd docker-registry-release
-  bosh -n create release
-  bosh -n upload release --rebase || true
+  bosh -n create release --with-tarball --version $version
 
   spiff merge \
     manifest-generation/misc-templates/iaas-settings.yml \
     ${templates_path}/docker-registry/iaas-settings-internal.yml \
     ${stubs_path}/aws-resources.yml \
     > ${tmpdir}/iaas-settings.yml
+
   bosh download manifest ${cf_deployment_name} > ${tmpdir}/cf.yml
+
   ./scripts/generate-deployment-manifest \
     ${stubs_path}/director-uuid.yml \
     ${stubs_path}/docker-registry/property-overrides.yml \
@@ -33,13 +32,4 @@ pushd docker-registry-release
     ${tmpdir}/iaas-settings.yml \
     ${tmpdir} \
     > ${tmpdir}/docker-registry-deployment.yml
-  bosh deployment ${tmpdir}/docker-registry-deployment.yml
-
-  ./scripts/ci/emit-datadog-deploy-event started ${cf_deployment_name} docker-registry
-  if bosh -n deploy; then
-    ./scripts/ci/emit-datadog-deploy-event finished ${cf_deployment_name} docker-registry
-  else
-    ./scripts/ci/emit-datadog-deploy-event failed ${cf_deployment_name} docker-registry
-    exit 1
-  fi
 popd
