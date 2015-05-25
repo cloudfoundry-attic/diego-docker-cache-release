@@ -6,6 +6,10 @@
   "docker_registry_address": "<%= properties.docker_registry.address %>",
   "docker_executable"      : "<%= properties.acceptance_tests.docker_executable %>",
   "docker_parameters"      : <%= Array(properties.acceptance_tests.docker_parameters) %>,
+  "docker_private_image"   : "<%= properties.acceptance_tests.docker_private_image %>",
+  "docker_user"            : "<%= properties.acceptance_tests.docker_user %>",
+  "docker_password"        : "<%= properties.acceptance_tests.docker_password %>",
+  "docker_email"           : "<%= properties.acceptance_tests.docker_email %>",
   "skip_ssl_validation"    : <%= properties.acceptance_tests.skip_ssl_validation %>,
   "artifacts_directory"    : "/var/vcap/sys/log/acceptance_tests/"
 }

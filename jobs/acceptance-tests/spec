@@ -29,3 +29,12 @@ properties:
     description: Path to Docker executable
   acceptance_tests.docker_parameters:
     description: Docker executable parameters
+  acceptance_tests.docker_private_image:
+    description: Docker private image
+    default: cloudfoundry/private-docker-app:latest
+  acceptance_tests.docker_user:
+    description: Docker user for pulling the private image
+  acceptance_tests.docker_password:
+    description: Docker password for pulling the private image
+  acceptance_tests.docker_email:
+    description: Docker email, used to pull the private image
