@@ -14,7 +14,7 @@ PIDFILE=$RUN_DIR/$JOB_NAME.pid
 exec 1>> $LOG_DIR/stdout.log
 exec 2>> $LOG_DIR/stderr.log
 
-export PATH=$PATH:$BASE_DIR/packages/docker-1.6.0
+export PATH=$PATH:$BASE_DIR/packages/docker-1.6.2
 export DOCKER_HOST=tcp://0.0.0.0:4243
 
 REGISTRY_STORAGE=$BASE_DIR/store/registry

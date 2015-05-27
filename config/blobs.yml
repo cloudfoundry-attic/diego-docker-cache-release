@@ -27,3 +27,7 @@ docker-registry/docker-registry-0.9.1.tar.gz:
   object_id: a91bc5a2-60db-45a0-be1f-ea0a40f74121
   sha: ceaf2b3896aa01400b4bd919ef8bf870d7379877
   size: 150199509
+docker/docker-1.6.2:
+  object_id: fc52a76b-8c7f-44c5-9003-83b195bd5d26
+  sha: 6f57a882bd26e8b541d9d8b3ff4f9c71c2839d4d
+  size: 15443675

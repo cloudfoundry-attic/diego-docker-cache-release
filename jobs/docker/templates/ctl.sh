@@ -4,7 +4,7 @@ RUN_DIR=/var/vcap/sys/run/docker
 LOG_DIR=/var/vcap/sys/log/docker
 PIDFILE=$RUN_DIR/docker.pid
 
-DOCKER_PKG=/var/vcap/packages/docker-1.6.0
+DOCKER_PKG=/var/vcap/packages/docker-1.6.2
 DOCKER_DATA_DIR=/var/vcap/data/docker
 
 TMPDIR=$DOCKER_DATA_DIR/tmp
