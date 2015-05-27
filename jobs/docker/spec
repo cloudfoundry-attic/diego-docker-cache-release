@@ -6,7 +6,7 @@ templates:
   cgroups-mount.sh: bin/cgroups-mount
 
 packages:
-  - docker-1.6.0
+  - docker-1.6.2
 
 properties:
   docker_registry.address:
