@@ -12,4 +12,4 @@ bosh releases
 
 bosh deployment ${acceptance_tests_manifest}
 bosh -n deploy
-bosh run errand acceptance_tests --keep-alive
+bosh run errand acceptance_tests --download-logs --keep-alive
