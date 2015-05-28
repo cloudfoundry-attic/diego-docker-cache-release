@@ -12,6 +12,7 @@ cf_deployment_name="cf-${ENVIRONMENT_NAME}"
 
 pushd docker-registry-release
   bosh -n create release 
+  bosh -n upload release
 
   spiff merge \
     manifest-generation/misc-templates/iaas-settings.yml \
