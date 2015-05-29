@@ -13,7 +13,7 @@ property_overrides:
     disk_quota_enabled: false
     listen_network: tcp
     listen_address: 0.0.0.0:7777
-    insecure_docker_registry_list: ["10.244.2.6:8080"]
+    insecure_docker_registry_list: ["10.244.2.0/28,10.244.2.16/30"]
   receptor:
     register_with_router: true
     domain_names:
