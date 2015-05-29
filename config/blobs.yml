@@ -1,16 +1,4 @@
 ---
-docker/docker-1.3.1:
-  object_id: 7c411ad3-702b-4b94-a769-503846c1edb9
-  sha: dd28ac35bb59e2c97399d4c0e613c6c2b64b2b94
-  size: 14155072
-docker-registry/docker-registry-0.8.1.tar.gz:
-  object_id: 626ef5a8-abe6-4215-b6fe-f2716a503676
-  sha: 1fac036c00f048f2627de5460485c308834cb047
-  size: 414045184
-consul/consul-0.4:
-  object_id: 66ef138b-ac9b-47cb-bead-e506db35a3cd
-  sha: 8be7984e9e1b7aab3d1eee14acdf59bb62207b6c
-  size: 16085929
 cf-cli/cf-linux-amd64.tgz:
   object_id: fddbf16b-5036-4298-958b-bd22d670b253
   sha: f845800310e4b702a39a2f1191e3d71862630103
@@ -19,10 +7,6 @@ golang/go1.4.linux-amd64.tar.gz:
   object_id: 0bbee9d3-3352-4e26-83e1-34546ffdc4d4
   sha: cd82abcb0734f82f7cf2d576c9528cebdafac4c6
   size: 63289725
-docker/docker-1.6.0:
-  object_id: 8f44b120-f070-46f8-abad-1e679702411d
-  sha: 1c3d8a2d87bd30567fc1b1cf461d957d504c3ebf
-  size: 15443598
 docker-registry/docker-registry-0.9.1.tar.gz:
   object_id: a91bc5a2-60db-45a0-be1f-ea0a40f74121
   sha: ceaf2b3896aa01400b4bd919ef8bf870d7379877
