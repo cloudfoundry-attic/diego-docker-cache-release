@@ -1,6 +1,29 @@
 # docker-registry-release
 BOSH release for Docker Registry
 
+---
+## Initial Setup
+
+This BOSH release doubles as a `$GOPATH`. It will automatically be set up for
+you if you have [direnv](http://direnv.net) installed.
+
+    # fetch release repo
+    mkdir -p ~/workspace
+    cd ~/workspace
+    git clone https://github.com/cloudfoundry-incubator/docker-registry-release.git
+    cd docker-registry-release/
+
+    # automate $GOPATH and $PATH setup
+    direnv allow
+
+    # initialize and sync submodules
+    ./scripts/update
+
+If you do not wish to use direnv, you can simply `source` the `.envrc` file in the root
+of the release repo.  You may manually need to update your `$GOPATH` and `$PATH` variables
+as you switch in and out of the directory.
+
+---
 ## Deploying to a local BOSH-Lite instance
 
 1. Follow the instructions in [Diego Release](https://github.com/cloudfoundry-incubator/diego-release) and install CF
