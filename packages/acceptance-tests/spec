@@ -7,13 +7,17 @@ dependencies:
 files:
   - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/bin/*
   - github.com/onsi/ginkgo/ginkgo/*.go # gosub
-  - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/docker/*.go # gosub
+  - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/caching/*.go # gosub
+  - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/commons/*.go # gosub
+  - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/feature/*.go # gosub
+  - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/smoke/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-test-helpers/cf/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-test-helpers/generator/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-test-helpers/helpers/*.go # gosub
   - github.com/onsi/ginkgo/*.go # gosub
   - github.com/onsi/gomega/*.go # gosub
   - github.com/onsi/gomega/gexec/*.go # gosub
+  - github.com/onsi/gomega/gbytes/*.go # gosub
   - github.com/onsi/ginkgo/config/*.go # gosub
   - github.com/onsi/ginkgo/ginkgo/convert/*.go # gosub
   - github.com/onsi/ginkgo/ginkgo/interrupthandler/*.go # gosub
@@ -36,7 +40,6 @@ files:
   - github.com/onsi/ginkgo/internal/testingtproxy/*.go # gosub
   - github.com/onsi/ginkgo/internal/writer/*.go # gosub
   - github.com/onsi/gomega/format/*.go # gosub
-  - github.com/onsi/gomega/gbytes/*.go # gosub
   - github.com/onsi/gomega/internal/assertion/*.go # gosub
   - github.com/onsi/gomega/internal/asyncassertion/*.go # gosub
   - github.com/onsi/gomega/internal/testingtsupport/*.go # gosub
