@@ -12,7 +12,9 @@ cd ${GOPATH}/src/github.com/cloudfoundry-incubator/docker-registry-acceptance-te
 
 go install github.com/onsi/ginkgo/ginkgo
 
-go test -c ./docker
+go test -c ./caching
+go test -c ./feature
+go test -c ./smoke
 
 # clean up artifacts
 rm *.test
