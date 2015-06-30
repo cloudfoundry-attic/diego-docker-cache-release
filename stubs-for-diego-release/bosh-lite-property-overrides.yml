@@ -199,3 +199,5 @@ property_overrides:
       -----END RSA PRIVATE KEY-----
     enable_cf_auth: true
     enable_diego_auth: true
+  stager:
+    insecure_docker_registry: true
