@@ -10,6 +10,7 @@ files:
   - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/caching/*.go # gosub
   - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/commons/*.go # gosub
   - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/feature/*.go # gosub
+  - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/metadata/*.go # gosub
   - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/smoke/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-test-helpers/cf/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-test-helpers/generator/*.go # gosub

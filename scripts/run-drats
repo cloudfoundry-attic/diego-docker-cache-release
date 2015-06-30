@@ -35,6 +35,6 @@ popd
 
 pushd ~/workspace/docker-registry-release/src/github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/
   export CONFIG=`pwd`/integration_config.json
-  ginkgo -r "$@" docker/
+  sh ./bin/test 
   unset CONFIG
 popd
