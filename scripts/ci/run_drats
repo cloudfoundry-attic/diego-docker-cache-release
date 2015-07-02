@@ -7,6 +7,7 @@ acceptance_tests_manifest=${PWD}/${DOCKER_REGISTRY_ACCEPTANCE_TESTS_MANIFEST}
 ./docker-registry-release/scripts/ci/bosh_setup
 
 # Report which releases were deployed together for this run of the DRATS
+cf -v
 bosh deployments
 bosh releases
 
