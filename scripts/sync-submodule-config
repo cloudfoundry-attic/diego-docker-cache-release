@@ -7,7 +7,11 @@ go get github.com/vito/gosub
 go install github.com/vito/gosub
 
 {
-  gosub list -test github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/...
+  gosub list -app  github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/... \
+             -app  github.com/cloudfoundry-incubator/diego-cli-plugin/...
+
+  gosub list -test github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/... \
+             -test github.com/cloudfoundry-incubator/diego-cli-plugin/...
 } > /tmp/packages
 
 cat /tmp/packages | xargs gosub sync

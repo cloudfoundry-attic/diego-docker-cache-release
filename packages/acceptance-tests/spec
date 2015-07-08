@@ -6,6 +6,11 @@ dependencies:
 
 files:
   - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/bin/*
+  - github.com/cloudfoundry-incubator/diego-cli-plugin/*.go # gosub
+  - github.com/cloudfoundry-incubator/diego-cli-plugin/apps/*.go # gosub
+  - github.com/cloudfoundry-incubator/diego-cli-plugin/diego_support/*.go # gosub
+  - github.com/cloudfoundry-incubator/diego-cli-plugin/docker/*.go # gosub
+  - github.com/cloudfoundry-incubator/diego-cli-plugin/utils/*.go # gosub
   - github.com/onsi/ginkgo/ginkgo/*.go # gosub
   - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/caching/*.go # gosub
   - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/commons/*.go # gosub
@@ -19,6 +24,9 @@ files:
   - github.com/onsi/gomega/*.go # gosub
   - github.com/onsi/gomega/gexec/*.go # gosub
   - github.com/onsi/gomega/gbytes/*.go # gosub
+  - github.com/cloudfoundry/cli/plugin/*.go # gosub
+  - github.com/cloudfoundry/cli/plugin/models/*.go # gosub
+  - github.com/simonleung8/cli-stack-changer/stacks/*.go # gosub
   - github.com/onsi/ginkgo/config/*.go # gosub
   - github.com/onsi/ginkgo/ginkgo/convert/*.go # gosub
   - github.com/onsi/ginkgo/ginkgo/interrupthandler/*.go # gosub

@@ -7,6 +7,11 @@ export PATH=${GOROOT}/bin:${PATH}
 
 export PATH=/var/vcap/packages/cf-cli/bin:${PATH} # put the cli on the path
 
+export CF_PLUGIN_HOME=$(mktemp -d -t diego-dats.XXXXX)
+/var/vcap/packages/cf-cli/bin/cf uninstall-plugin Diego-Beta || true
+/var/vcap/packages/cf-cli/bin/cf install-plugin /var/vcap/packages/acceptance-tests/bin/diego-cli-plugin
+/var/vcap/packages/cf-cli/bin/cf plugins
+
 export GOPATH=/var/vcap/packages/acceptance-tests
 export PATH=${GOPATH}/bin:${PATH}
 
@@ -23,6 +28,8 @@ verbose=<%= properties.acceptance_tests.verbose ? "-v" : "" %>
 bin/test $verbose -keepGoing || EXITSTATUS=$?
 
 echo "Acceptance Tests Complete; exit status: $EXITSTATUS"
+
+rm -rf ${CF_PLUGIN_HOME}
 
 for i in /var/vcap/sys/log/acceptance_tests/*.txt; do
   if [ -e "$i" ]; then
