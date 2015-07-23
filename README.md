@@ -1,5 +1,5 @@
-# docker-registry-release
-BOSH release for Docker Registry
+# diego-docker-cache
+BOSH release for Diego Docker Cache
 
 ---
 ## Initial Setup
@@ -10,8 +10,8 @@ you if you have [direnv](http://direnv.net) installed.
     # fetch release repo
     mkdir -p ~/workspace
     cd ~/workspace
-    git clone https://github.com/cloudfoundry-incubator/docker-registry-release.git
-    cd docker-registry-release/
+    git clone https://github.com/cloudfoundry-incubator/diego-docker-cache.git
+    cd diego-docker-cache/
 
     # automate $GOPATH and $PATH setup
     direnv allow
@@ -33,7 +33,7 @@ as you switch in and out of the directory.
         cd ~/workspace/diego-release
         ./scripts/generate-deployment-manifest \
           ~/deployments/bosh-lite/director.yml \
-          ~/workspace/docker-registry-release/stubs-for-diego-release/bosh-lite-property-overrides.yml \
+          ~/workspace/diego-docker-cache/stubs-for-diego-release/bosh-lite-property-overrides.yml \
           manifest-generation/bosh-lite-stubs/instance-count-overrides.yml \
           manifest-generation/bosh-lite-stubs/persistent-disk-overrides.yml \
           manifest-generation/bosh-lite-stubs/iaas-settings.yml \
@@ -48,9 +48,9 @@ as you switch in and out of the directory.
         bosh -n upload release
         bosh -n deploy
 
-1. Generate and target Docker Registry's manifest:
+1. Generate and target Diego Docker Cache's manifest:
 
-        cd ~/workspace/docker-registry-release
+        cd ~/workspace/diego-docker-cache
         ./scripts/generate-deployment-manifest ~/deployments/bosh-lite/director.yml \
             manifest-generation/bosh-lite-stubs/property-overrides.yml \
             manifest-generation/bosh-lite-stubs/instance-count-overrides.yml \
@@ -58,17 +58,17 @@ as you switch in and out of the directory.
             manifest-generation/bosh-lite-stubs/iaas-settings.yml \
             manifest-generation/bosh-lite-stubs/additional-jobs.yml \
             ~/deployments/bosh-lite \
-            > ~/deployments/bosh-lite/docker-registry.yml
-        bosh deployment ~/deployments/bosh-lite/docker-registry.yml
+            > ~/deployments/bosh-lite/docker-cache.yml
+        bosh deployment ~/deployments/bosh-lite/docker-cache.yml
 
-1. Deploy this Docker Registry:
+1. Deploy the Docker Cache:
 
         bosh create release --force
         bosh -n upload release
         bosh -n deploy
         
 ## Running Acceptance Tests
-See [docker-registry-acceptance-tests](https://github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/)
+See [docker-cache-acceptance-tests](https://github.com/cloudfoundry-incubator/docker-cache-acceptance-tests/)
 
 ## Caching docker image with Diego
 
