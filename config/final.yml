@@ -1,5 +1,5 @@
 ---
-final_name: diego-docker-cache-release
+final_name: diego-docker-cache
 
 blobstore:
   provider: s3
