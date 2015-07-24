@@ -1,10 +1,10 @@
-name: (( config_from_cf.cf_deployment_name "-docker-registry" ))
+name: (( config_from_cf.cf_deployment_name "-diego-docker-cache" ))
 
 releases: (( base_releases additional_jobs.releases ))
 
 compilation:
   workers: 1
-  network: docker-registry
+  network: docker-cache
   reuse_compilation_vms: true
   cloud_properties: (( iaas_settings.compilation_cloud_properties ))
 
@@ -16,27 +16,27 @@ update:
   serial: false
 
 networks:
-  - name: docker-registry
+  - name: docker-cache
     type: manual
-    subnets: (( iaas_settings.subnet_configs.docker-registry.subnets ))
+    subnets: (( iaas_settings.subnet_configs.docker-cache.subnets ))
 
 resource_pools:
-  - name: docker-registry
-    network: docker-registry
+  - name: docker-cache
+    network: docker-cache
     stemcell: (( iaas_settings.stemcell ))
-    cloud_properties: (( iaas_settings.resource_pool_cloud_properties.docker-registry.cloud_properties ))
+    cloud_properties: (( iaas_settings.resource_pool_cloud_properties.docker-cache.cloud_properties ))
 
 jobs:
-  - name: docker-registry
-    templates: (( base_job_templates.docker-registry additional_jobs.docker-registry ))
-    instances: (( instance_count_overrides.docker-registry.instances || 1 ))
-    persistent_disk: (( persistent_disk_overrides.docker-registry || 10240 ))
-    resource_pool: docker-registry
+  - name: docker-cache
+    templates: (( base_job_templates.docker-cache additional_jobs.diego-docker-cache ))
+    instances: (( instance_count_overrides.docker-cache.instances || 1 ))
+    persistent_disk: (( persistent_disk_overrides.docker-cache || 10240 ))
+    resource_pool: docker-cache
     networks:
-      - name: docker-registry
+      - name: docker-cache
     update:
       serial: false
-      max_in_flight: (( instance_count_overrides.docker-registry.max_in_flight || 1 ))
+      max_in_flight: (( instance_count_overrides.docker-cache.max_in_flight || 1 ))
     properties:
       consul:
         agent:
@@ -58,17 +58,17 @@ persistent_disk_overrides: (( merge ))
 property_overrides: (( merge ))
 additional_jobs:
   releases: (( merge || [] ))
-  docker-registry: (( merge || [] ))
+  diego-docker-cache: (( merge || [] ))
 base_releases:
-  - name: docker-registry
+  - name: diego-docker-cache
     version: latest
   - name: cf
     version: latest
 base_job_templates:
-  docker-registry:
+  docker-cache:
     - name: consul_agent
       release: cf
     - name: docker
-      release: docker-registry
+      release: diego-docker-cache
     - name: docker_registry
-      release: docker-registry
+      release: diego-docker-cache

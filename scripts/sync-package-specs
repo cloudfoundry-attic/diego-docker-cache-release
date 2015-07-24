@@ -33,7 +33,7 @@ function sync_package() {
 }
 
 sync_package acceptance-tests \
-  -test github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/... \
+  -test github.com/cloudfoundry-incubator/docker-cache-acceptance-tests/... \
   -app github.com/cloudfoundry-incubator/diego-cli-plugin/... \
   -app github.com/onsi/ginkgo/ginkgo &
 

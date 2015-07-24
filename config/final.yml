@@ -1,7 +1,7 @@
 ---
-final_name: docker-registry
+final_name: diego-docker-cache-release
 
 blobstore:
   provider: s3
   options:
-    bucket_name: docker-registry-release
+    bucket_name: diego-docker-cache-release

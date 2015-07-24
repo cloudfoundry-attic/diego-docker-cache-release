@@ -5,7 +5,7 @@ set -e
 pushd ~/workspace/diego-release
   ./scripts/generate-deployment-manifest \
     ~/deployments/bosh-lite/director.yml \
-    ~/workspace/docker-registry-release/stubs-for-diego-release/bosh-lite-property-overrides.yml \
+    ~/workspace/diego-docker-cache-release/stubs-for-diego-release/bosh-lite-property-overrides.yml \
     manifest-generation/bosh-lite-stubs/instance-count-overrides.yml \
     manifest-generation/bosh-lite-stubs/persistent-disk-overrides.yml \
     manifest-generation/bosh-lite-stubs/iaas-settings.yml \
@@ -18,7 +18,7 @@ pushd ~/workspace/diego-release
   bosh -t lite -n -d ~/deployments/bosh-lite/diego.yml deploy
 popd
 
-pushd ~/workspace/docker-registry-release
+pushd ~/workspace/diego-docker-cache-release
   ./scripts/generate-deployment-manifest ~/deployments/bosh-lite/director.yml \
     manifest-generation/bosh-lite-stubs/property-overrides.yml \
     manifest-generation/bosh-lite-stubs/instance-count-overrides.yml \
@@ -26,14 +26,14 @@ pushd ~/workspace/docker-registry-release
     manifest-generation/bosh-lite-stubs/iaas-settings.yml \
     manifest-generation/bosh-lite-stubs/additional-jobs.yml \
     ~/deployments/bosh-lite \
-    > ~/deployments/bosh-lite/docker-registry.yml
+    > ~/deployments/bosh-lite/docker-cache.yml
 
   bosh create release --force
   bosh -t lite -n upload release
-  bosh -t lite -n -d ~/deployments/bosh-lite/docker-registry.yml deploy
+  bosh -t lite -n -d ~/deployments/bosh-lite/docker-cache.yml deploy
 popd
 
-pushd ~/workspace/docker-registry-release/src/github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/
+pushd ~/workspace/diego-docker-cache-release/src/github.com/cloudfoundry-incubator/docker-cache-acceptance-tests/
   export CONFIG=`pwd`/integration_config.json
   sh ./bin/test 
   unset CONFIG

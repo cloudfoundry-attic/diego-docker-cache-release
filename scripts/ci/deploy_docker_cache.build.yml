@@ -5,7 +5,7 @@ image: docker:///cloudfoundry/diego-pipeline
 
 inputs:
   - name: deployments-runtime
-  - name: docker-registry-release
+  - name: diego-docker-cache-release
 
 params:
   BOSH_PASSWORD: ~
@@ -16,4 +16,4 @@ params:
   ENVIRONMENT_NAME: ~
     
 run:
-  path: docker-registry-release/scripts/ci/deploy_docker_registry
+  path: diego-docker-cache-release/scripts/ci/deploy_diego_cache

@@ -10,7 +10,7 @@ cp -a . ${GOPATH}/src
 
 go install github.com/cloudfoundry-incubator/diego-cli-plugin
 
-cd ${GOPATH}/src/github.com/cloudfoundry-incubator/docker-registry-acceptance-tests
+cd ${GOPATH}/src/github.com/cloudfoundry-incubator/docker-cache-acceptance-tests
 
 go install github.com/onsi/ginkgo/ginkgo
 

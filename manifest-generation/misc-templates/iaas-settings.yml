@@ -3,9 +3,9 @@ iaas_settings:
     name: (( merge ))
     version: (( merge ))
   subnet_configs:
-    - name: docker-registry
+    - name: docker-cache
       subnets: (( merge ))
   compilation_cloud_properties: (( merge ))
   resource_pool_cloud_properties:
-    - name: docker-registry
+    - name: docker-cache
       cloud_properties: (( merge ))

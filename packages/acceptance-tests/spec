@@ -5,18 +5,18 @@ dependencies:
   - golang_1.4
 
 files:
-  - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/bin/*
+  - github.com/cloudfoundry-incubator/docker-cache-acceptance-tests/bin/*
   - github.com/cloudfoundry-incubator/diego-cli-plugin/*.go # gosub
   - github.com/cloudfoundry-incubator/diego-cli-plugin/apps/*.go # gosub
   - github.com/cloudfoundry-incubator/diego-cli-plugin/diego_support/*.go # gosub
   - github.com/cloudfoundry-incubator/diego-cli-plugin/docker/*.go # gosub
   - github.com/cloudfoundry-incubator/diego-cli-plugin/utils/*.go # gosub
   - github.com/onsi/ginkgo/ginkgo/*.go # gosub
-  - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/caching/*.go # gosub
-  - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/commons/*.go # gosub
-  - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/feature/*.go # gosub
-  - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/metadata/*.go # gosub
-  - github.com/cloudfoundry-incubator/docker-registry-acceptance-tests/smoke/*.go # gosub
+  - github.com/cloudfoundry-incubator/docker-cache-acceptance-tests/caching/*.go # gosub
+  - github.com/cloudfoundry-incubator/docker-cache-acceptance-tests/commons/*.go # gosub
+  - github.com/cloudfoundry-incubator/docker-cache-acceptance-tests/feature/*.go # gosub
+  - github.com/cloudfoundry-incubator/docker-cache-acceptance-tests/metadata/*.go # gosub
+  - github.com/cloudfoundry-incubator/docker-cache-acceptance-tests/smoke/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-test-helpers/cf/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-test-helpers/generator/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-test-helpers/helpers/*.go # gosub
