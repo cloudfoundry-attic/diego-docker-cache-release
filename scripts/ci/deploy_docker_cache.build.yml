@@ -16,4 +16,4 @@ params:
   ENVIRONMENT_NAME: ~
     
 run:
-  path: diego-docker-cache-release/scripts/ci/deploy_diego_cache
+  path: diego-docker-cache-release/scripts/ci/deploy_docker_cache
