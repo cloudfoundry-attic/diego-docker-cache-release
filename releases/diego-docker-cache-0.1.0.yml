@@ -1,0 +1,49 @@
+---
+packages:
+- name: acceptance-tests
+  version: ecba9f5b8f302925a1c01c422419a308f9131545
+  fingerprint: ecba9f5b8f302925a1c01c422419a308f9131545
+  sha1: bb69b6be5f840c85f4fac7dff311b7edbce5cb77
+  dependencies:
+  - golang_1.4
+- name: cf-cli
+  version: 34ab59596d23d172fb67d9da54a27af3ac56651d
+  fingerprint: 34ab59596d23d172fb67d9da54a27af3ac56651d
+  sha1: 83effc6495eda38badb36347d8f973c86530c616
+  dependencies: []
+- name: docker-1.6.2
+  version: f425e2da16a2c6b48cef52b081b4d9af9f0d3a41
+  fingerprint: f425e2da16a2c6b48cef52b081b4d9af9f0d3a41
+  sha1: b912179c5a9a342dcab47a3c0f065945d9c74eb3
+  dependencies: []
+- name: docker-registry-0.9.1
+  version: ca53a20413538fe21bc26309f6abfbebc55de46e
+  fingerprint: ca53a20413538fe21bc26309f6abfbebc55de46e
+  sha1: 1af7a38ef5ff4ce61401881f208296db672784e1
+  dependencies: []
+- name: golang_1.4
+  version: 80fd10aaca7fafada6e7f228f03c5024faa0b51a
+  fingerprint: 80fd10aaca7fafada6e7f228f03c5024faa0b51a
+  sha1: e0f8799113dd6fd2eb266030d77ac992ba2ff5a3
+  dependencies: []
+jobs:
+- name: acceptance-tests
+  version: 7593b4faf724fb850e46969046165f247c1ef189
+  fingerprint: 7593b4faf724fb850e46969046165f247c1ef189
+  sha1: d9ea34dc51f597f494baa36507b99d757474607a
+- name: docker
+  version: 16fa41dabab2071a443248b2dd0ea58ee322c1bb
+  fingerprint: 16fa41dabab2071a443248b2dd0ea58ee322c1bb
+  sha1: 25cf087fabf3e8e59b57783ad63da269dd0b5cbc
+- name: docker_registry
+  version: e676a8b5f8052eff25d346b5ad6983aa8648e111
+  fingerprint: e676a8b5f8052eff25d346b5ad6983aa8648e111
+  sha1: fd0f0ee1f21534e0c1bad40db00dd0a5648a1d83
+license:
+  version: 45ba225fe5790e0633fb9a8e20be9efeea888f51
+  fingerprint: 45ba225fe5790e0633fb9a8e20be9efeea888f51
+  sha1: 8ec4806578f490bf94fded826372515144e39679
+commit_hash: 96d1e368
+uncommitted_changes: true
+name: diego-docker-cache
+version: 0.1.0
