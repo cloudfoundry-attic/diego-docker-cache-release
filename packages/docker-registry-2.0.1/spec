@@ -1,0 +1,7 @@
+---
+name: docker-registry-2.0.1
+
+dependencies: []
+
+files:
+  - docker-registry/docker-registry-2.0.1.tar.gz

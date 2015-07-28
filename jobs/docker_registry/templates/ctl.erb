@@ -26,20 +26,22 @@ start)
     mknod -m 666 /dev/full c 1 7
   fi
 
-  cat $BASE_DIR/packages/docker-registry-0.9.1/docker-registry-0.9.1.tar.gz | \
+  cat $BASE_DIR/packages/docker-registry-2.0.1/docker-registry-2.0.1.tar.gz | \
     docker import - registry:private
 
   echo $$ > $PIDFILE
 
   exec docker run \
-    -e SETTINGS_FLAVOR=local \
-    -e STORAGE_PATH=/registry \
-    -e SEARCH_BACKEND=sqlalchemy \
-    -e DOCKER_REGISTRY_CONFIG=/docker-registry/config/config_sample.yml \
+    -e PATH=/go/bin:/usr/src/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+    -e GOLANG_VERSION=1.4.2 \
+    -e GOPATH=/go/src/github.com/docker/distribution/Godeps/_workspace:/go \
+    -e DISTRIBUTION_DIR=/go/src/github.com/docker/distribution \
+    -e REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/registry \
     -p <%= p("docker_registry.address").split(":")[1] %>:5000 \
     -v $REGISTRY_STORAGE:/registry \
+    -w /go/src/github.com/docker/distribution \
     registry:private \
-    docker-registry
+    registry cmd/registry/config.yml
   ;;
 
 stop)
