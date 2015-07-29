@@ -7,11 +7,11 @@ golang/go1.4.linux-amd64.tar.gz:
   object_id: 0bbee9d3-3352-4e26-83e1-34546ffdc4d4
   sha: cd82abcb0734f82f7cf2d576c9528cebdafac4c6
   size: 63289725
-docker/docker-1.6.2:
-  object_id: fc52a76b-8c7f-44c5-9003-83b195bd5d26
-  sha: 6f57a882bd26e8b541d9d8b3ff4f9c71c2839d4d
-  size: 15443675
 docker-registry/docker-registry-2.0.1.tar.gz:
   object_id: cf3f2b28-280f-491c-b476-c8c564b5f2af
   sha: 8885e68917421fc3ae40feeb85699a78de8f9a81
   size: 189041923
+docker/docker-1.7.1:
+  object_id: 6f143b4a-feaa-4b84-be76-0ff362fcbe3c
+  sha: 386f6e91114dc252a13b266fe2ac3a27e83bd0f7
+  size: 16296881

@@ -66,7 +66,36 @@ as you switch in and out of the directory.
         bosh create release --force
         bosh -n upload release
         bosh -n deploy
-        
+
+## Configuring backend storage
+
+You can configure the [Docker Registry](https://docs.docker.com/registry/) backend storage in [property-overrides.yml](manifest-generation/bosh-lite-stubs/property-overrides.yml). Here is what you have to include for each supported storage type:
+
+### Filesystem
+This is the default storage type. You can simply omit the property overrides or explicitly add:
+
+```
+docker_registry:
+  storage:
+    name: filesystem
+```
+
+### AWS S3
+
+```
+docker_registry:
+  storage:
+    name: s3
+    s3:
+      bucket: <bucket name>
+      accesskey: <access key>
+      secretkey: <secret key>
+      region: <region name, i.e. us-east-1>
+```
+
+
+Save the property changes and then [generate the manifest and deploy](https://github.com/cloudfoundry-incubator/diego-docker-cache-release#deploying-to-a-local-bosh-lite-instance) the Diego Docker Cache release.
+     
 ## Running Acceptance Tests
 See [docker-cache-acceptance-tests](https://github.com/cloudfoundry-incubator/docker-cache-acceptance-tests/)
 

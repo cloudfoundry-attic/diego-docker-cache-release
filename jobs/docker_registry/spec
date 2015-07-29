@@ -12,4 +12,18 @@ properties:
   docker_registry.address:
     description: "Address of interface on which to serve"
     default: "0.0.0.0:8080"
-
+  docker_registry.storage.name:
+    description: "Backend storage for the registry images. Supported values: filesystem, s3"
+    default: "filesystem"
+  docker_registry.storage.s3.bucket:
+    description: "Amazon S3 bucket name"
+    default: ~
+  docker_registry.storage.s3.accesskey:
+    description: "Access key for the S3 bucket"
+    default: ~
+  docker_registry.storage.s3.secretkey:
+    description: "Secret key for the S3 bucket"
+    default: ~
+  docker_registry.storage.s3.region:
+    description: "Amazon S3 region"
+    default: ~

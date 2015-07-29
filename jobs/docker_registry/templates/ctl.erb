@@ -14,7 +14,7 @@ PIDFILE=$RUN_DIR/$JOB_NAME.pid
 exec 1>> $LOG_DIR/stdout.log
 exec 2>> $LOG_DIR/stderr.log
 
-export PATH=$PATH:$BASE_DIR/packages/docker-1.6.2
+export PATH=$PATH:$BASE_DIR/packages/docker-1.7.1
 export DOCKER_HOST=tcp://0.0.0.0:4243
 
 REGISTRY_STORAGE=$BASE_DIR/store/registry
@@ -36,7 +36,17 @@ start)
     -e GOLANG_VERSION=1.4.2 \
     -e GOPATH=/go/src/github.com/docker/distribution/Godeps/_workspace:/go \
     -e DISTRIBUTION_DIR=/go/src/github.com/docker/distribution \
+    <% if p("docker_registry.storage.name") == "s3" %> \
+    -e REGISTRY_STORAGE=s3 \
+    -e REGISTRY_STORAGE_S3_ACCESSKEY=<%= p("docker_registry.storage.s3.accesskey") %> \
+    -e REGISTRY_STORAGE_S3_SECRETKEY=<%= p("docker_registry.storage.s3.secretkey") %> \
+    -e REGISTRY_STORAGE_S3_REGION=<%= p("docker_registry.storage.s3.region") %> \
+    -e REGISTRY_STORAGE_S3_BUCKET=<%= p("docker_registry.storage.s3.bucket") %> \
+    -e REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR=inmemory \
+    -e REGISTRY_MAINTENANCE_UPLOADPURGING_ENABLED=false \
+    <% else %> \
     -e REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/registry \
+    <% end %> \
     -p <%= p("docker_registry.address").split(":")[1] %>:5000 \
     -v $REGISTRY_STORAGE:/registry \
     -w /go/src/github.com/docker/distribution \
