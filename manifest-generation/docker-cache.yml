@@ -49,6 +49,14 @@ properties:
     agent:
       servers:
         lan: (( config_from_cf.consul.lan_servers ))
+  docker_registry:
+    storage:
+      name: (( property_overrides.docker_registry.storage.name || "filesystem" ))
+      s3:
+        bucket:  (( property_overrides.docker_registry.storage.s3.bucket || nil ))
+        accesskey: (( property_overrides.docker_registry.storage.s3.accesskey || nil ))
+        secretkey:  (( property_overrides.docker_registry.storage.s3.secretkey || nil ))
+        region:  (( property_overrides.docker_registry.storage.s3.region || nil ))
 
 # The keys below should not be included in the final stub
 config_from_cf: (( merge ))
