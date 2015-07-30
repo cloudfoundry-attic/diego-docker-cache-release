@@ -21,9 +21,9 @@ pushd diego-docker-cache-release
     > /tmp/iaas-settings.yml
 
   spiff merge \
+    ${templates_path}/docker-registry/property-overrides-internal.yml \
     ${stubs_path}/aws-resources.yml \
     ${stubs_path}/cf/aws-keys.yml \
-    ${templates_path}/docker-registry/property-overrides-internal.yml \
     > /tmp/property-overrides-internal.yml
 
   spiff merge \
