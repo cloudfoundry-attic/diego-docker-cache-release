@@ -20,11 +20,22 @@ pushd diego-docker-cache-release
     ${stubs_path}/aws-resources.yml \
     > /tmp/iaas-settings.yml
 
+  spiff merge \
+    ${stubs_path}/aws-resources.yml \
+    ${stubs_path}/cf/aws-keys.yml \
+    ${templates_path}/docker-registry/property-overrides-internal.yml \
+    > /tmp/property-overrides-internal.yml
+
+  spiff merge \
+    ${stubs_path}/docker-registry/property-overrides.yml \
+    /tmp/property-overrides-internal.yml \
+    > /tmp/property-overrides.yml
+
   bosh download manifest ${cf_deployment_name} > /tmp/cf.yml
 
   ./scripts/generate-deployment-manifest \
     ${stubs_path}/director-uuid.yml \
-    ${stubs_path}/docker-registry/property-overrides.yml \
+    /tmp/property-overrides.yml \
     ${stubs_path}/docker-registry/instance-count-overrides.yml \
     ${stubs_path}/docker-registry/persistent-disk-overrides.yml \
     /tmp/iaas-settings.yml \

@@ -17,7 +17,7 @@ case $1 in
     chown -R vcap:vcap $RUN_DIR
 
     mkdir -p $LOG_DIR
-    chown -R vcap:vcap $RUN_DIR
+    chown -R vcap:vcap $LOG_DIR
 
     mkdir -p $DOCKER_DATA_DIR
 
