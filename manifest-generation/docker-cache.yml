@@ -57,6 +57,10 @@ properties:
         accesskey: (( property_overrides.docker_registry.storage.s3.accesskey || nil ))
         secretkey:  (( property_overrides.docker_registry.storage.s3.secretkey || nil ))
         region:  (( property_overrides.docker_registry.storage.s3.region || nil ))
+    tls:
+      enabled: (( property_overrides.docker_registry.tls.enabled || false ))
+      certificate: (( property_overrides.docker_registry.tls.certificate || nil ))
+      key: (( property_overrides.docker_registry.tls.key || nil ))
 
 # The keys below should not be included in the final stub
 config_from_cf: (( merge ))

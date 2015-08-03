@@ -27,3 +27,12 @@ properties:
   docker_registry.storage.s3.region:
     description: "Amazon S3 region"
     default: ~
+  docker_registry.tls.enabled:
+    description: "Enable TLS"
+    default: false
+  docker_registry.tls.certificate:
+    description: "TLS Certificate"
+    default: ~
+  docker_registry.tls.key:
+    description: "TLS Key"
+    default: ~

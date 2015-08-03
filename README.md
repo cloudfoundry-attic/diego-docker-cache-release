@@ -67,11 +67,13 @@ as you switch in and out of the directory.
         bosh -n upload release
         bosh -n deploy
 
-## Configuring backend storage
+## Configuring registry
+
+### Backend storage
 
 You can configure the [Docker Registry](https://docs.docker.com/registry/) backend storage in [property-overrides.yml](manifest-generation/bosh-lite-stubs/property-overrides.yml). Here is what you have to include for each supported storage type:
 
-### Filesystem
+#### Filesystem
 This is the default storage type. You can simply omit the property overrides or explicitly add:
 
 ```
@@ -80,7 +82,7 @@ docker_registry:
     name: filesystem
 ```
 
-### AWS S3
+#### AWS S3
 
 ```
 docker_registry:
@@ -95,7 +97,33 @@ docker_registry:
 
 
 Save the property changes and then [generate the manifest and deploy](https://github.com/cloudfoundry-incubator/diego-docker-cache-release#deploying-to-a-local-bosh-lite-instance) the Diego Docker Cache release.
-     
+
+### TLS
+
+Docker Registry can be configured to use TLS for secure communication. To do this:
+1. Obtain a certificate and key. This can be done with OpenSSL:
+```
+openssl genrsa -out server.key 1024
+openssl req -new -key server.key -out server.csr
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+```
+1. Edit [property-overrides.yml](manifest-generation/bosh-lite-stubs/property-overrides.yml). You have to add the generated certificate and key:
+```
+docker_registry:
+  tls:
+    enabled: true
+    certificate: |
+      -----BEGIN CERTIFICATE-----
+      ... content of server.crt file ...
+      -----END CERTIFICATE-----
+    key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      ... content of server.key file ...
+      -----END RSA PRIVATE KEY-----
+```
+  
+Save the property changes and then [generate the manifest and deploy](https://github.com/cloudfoundry-incubator/diego-docker-cache-release#deploying-to-a-local-bosh-lite-instance) the Diego Docker Cache release.
+
 ## Running Acceptance Tests
 See [docker-cache-acceptance-tests](https://github.com/cloudfoundry-incubator/docker-cache-acceptance-tests/)
 

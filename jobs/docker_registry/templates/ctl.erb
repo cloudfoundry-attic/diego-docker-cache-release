@@ -17,14 +17,28 @@ exec 2>> $LOG_DIR/stderr.log
 export PATH=$PATH:$BASE_DIR/packages/docker-1.7.1
 export DOCKER_HOST=tcp://0.0.0.0:4243
 
-REGISTRY_STORAGE=$BASE_DIR/store/registry
-mkdir -p $REGISTRY_STORAGE
-
 case $1 in
 start)
   if ! [ -e /dev/full ]; then
     mknod -m 666 /dev/full c 1 7
   fi
+
+  <% if p("docker_registry.storage.name") == "filesystem" %>
+  REGISTRY_STORAGE=$BASE_DIR/store/registry
+  mkdir -p $REGISTRY_STORAGE
+  <% end %>
+
+  <% if p("docker_registry.tls.enabled") %>
+  TLS_STORAGE=$BASE_DIR/store/tls
+  mkdir -p $TLS_STORAGE
+  rm -rf $TLS_STORAGE/*
+  cat > $TLS_STORAGE/certificate <<EOF
+<%= p("docker_registry.tls.certificate") %>
+EOF
+  cat > $TLS_STORAGE/key <<EOF
+<%= p("docker_registry.tls.key") %>
+EOF
+  <% end %>
 
   cat $BASE_DIR/packages/docker-registry-2.0.1/docker-registry-2.0.1.tar.gz | \
     docker import - registry:private
@@ -46,9 +60,14 @@ start)
     -e REGISTRY_MAINTENANCE_UPLOADPURGING_ENABLED=false \
     <% else %> \
     -e REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/registry \
+    -v $REGISTRY_STORAGE:/registry \
+    <% end %> \
+    <% if p("docker_registry.tls.enabled") %> \
+    -e REGISTRY_HTTP_TLS_CERTIFICATE=/tls/certificate \
+    -e REGISTRY_HTTP_TLS_KEY=/tls/key \
+    -v $TLS_STORAGE:/tls \
     <% end %> \
     -p <%= p("docker_registry.address").split(":")[1] %>:5000 \
-    -v $REGISTRY_STORAGE:/registry \
     -w /go/src/github.com/docker/distribution \
     registry:private \
     registry cmd/registry/config.yml
