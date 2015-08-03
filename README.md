@@ -101,6 +101,7 @@ Save the property changes and then [generate the manifest and deploy](https://gi
 ### TLS
 
 Docker Registry can be configured to use TLS for secure communication. To do this:
+
 1. Obtain a certificate and key. This can be done with OpenSSL:
 ```
 openssl genrsa -out server.key 1024
