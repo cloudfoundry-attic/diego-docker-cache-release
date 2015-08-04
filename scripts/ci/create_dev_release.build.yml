@@ -1,0 +1,11 @@
+---
+platform: linux
+
+image: docker:///cloudfoundry/diego-pipeline
+
+inputs:
+  - name: diego-docker-cache-release
+  - name: docker-cache-version
+
+run:
+  path: diego-docker-cache-release/scripts/ci/create_dev_release
