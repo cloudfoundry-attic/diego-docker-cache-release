@@ -1,0 +1,9 @@
+platform: linux
+
+image: docker:///cloudfoundry/diego-pipeline
+
+inputs:
+  - name: diego-docker-cache-release
+
+run:
+  path: diego-docker-cache-release/scripts/ci/merge-master-into-develop
