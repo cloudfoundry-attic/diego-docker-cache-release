@@ -111,7 +111,7 @@ Docker Registry can be configured to use TLS for secure communication. To do thi
 1. Edit [property-overrides.yml](manifest-generation/bosh-lite-stubs/property-overrides.yml). You have to add the generated certificate and key:
 
         docker_registry:
-        tls:
+          tls:
             enabled: true
             certificate: |
               -----BEGIN CERTIFICATE-----
