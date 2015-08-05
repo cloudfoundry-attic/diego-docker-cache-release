@@ -28,7 +28,7 @@ as you switch in and out of the directory.
 
 1. Follow the instructions in [Diego Release](https://github.com/cloudfoundry-incubator/diego-release) and install CF
 
-1. When generating the Diego's manifest (step 9) use the following set of files instead: 
+1. When generating the Diego's manifest (step 9) use the following set of files instead:
 
         cd ~/workspace/diego-release
         ./scripts/generate-deployment-manifest \
@@ -67,6 +67,7 @@ as you switch in and out of the directory.
         bosh -n upload release
         bosh -n deploy
 
+---
 ## Configuring registry
 
 ### Backend storage
@@ -122,7 +123,7 @@ Docker Registry can be configured to use TLS for secure communication. To do thi
               ... content of server.key file ...
               -----END RSA PRIVATE KEY-----
 
-  
+
 Save the property changes and then [generate the manifest and deploy](https://github.com/cloudfoundry-incubator/diego-docker-cache-release#deploying-to-a-local-bosh-lite-instance) the Diego Docker Cache release.
 
 ## Running Acceptance Tests
@@ -132,24 +133,23 @@ See [docker-cache-acceptance-tests](https://github.com/cloudfoundry-incubator/do
 
 1. Install CF CLI v6.10.0+ (or follow the guide in [Migrating to Diego](https://github.com/cloudfoundry-incubator/diego-design-notes/blob/master/migrating-to-diego.md#installing-the-diego-beta-cli-plugin))
 1. Install `diego-beta` CLI Plugin
- 
+
         cf add-plugin-repo CF-Community http://plugins.cloudfoundry.org/
         cf install-plugin Diego-Beta -r CF-Community
 
 1. Login to CF
- 
+
         cf api --skip-ssl-validation api.10.244.0.34.xip.io
         cf auth admin admin
 
 1. Push your docker application
 
-        cf docker-push <application_name> <docker_image> --no-start 
-   
+        cf docker-push <application_name> <docker_image> --no-start
+
 1. Enable caching by setting `DIEGO_DOCKER_CACHE` boolean environment variable
- 
+
         cf set-env <application_name> DIEGO_DOCKER_CACHE true
-   
+
 1. Start the application:
 
         cf start <application_name>
-        
