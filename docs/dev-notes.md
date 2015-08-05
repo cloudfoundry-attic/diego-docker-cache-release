@@ -62,21 +62,17 @@ curl http://localhost:8500/v1/catalog/service/docker-registry
 ]
 ```
 
-To execute the above request we use `localhost:8500` which is the default value for the `-consulAgentURL` flag.
+To execute the above request we use `localhost:8500` which is the default URL for the Consul Agent running on the cc_bridge machine.
 
 Currently `ServicePort` is always 0 since we do not register a concrete port and rely on hardcoded one (`8080`).
 
 ## Components
 The following components are involved in the staging and running of Docker image:
 
-- **Cloud Controller**  
-Initiates desire app request
-- **Stager**  
-Launches staging container with [Docker Lifecycle](https://github.com/cloudfoundry-incubator/docker_app_lifecycle)
-- **Builder**
-Performs the caching of the image
-- **Cloud Controller**
-Stores the cached image URL for subsequent use
+- **Cloud Controller**: Initiates desire app request
+- **Stager**: Launches staging container with [Docker Lifecycle](https://github.com/cloudfoundry-incubator/docker_app_lifecycle)
+- **Builder**: Performs the caching of the image
+- **Cloud Controller**: Stores the cached image URL for subsequent use
 
 ### Cloud Controller
 The table `droplets` is extended with `cached_docker_image` that stores the image URL returned by the staging process.
