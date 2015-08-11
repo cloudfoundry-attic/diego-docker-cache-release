@@ -242,7 +242,7 @@ property_overrides:
     listen_network: tcp
     listen_address: 0.0.0.0:7777
     btrfs_store_size_mb: 20_000
-    insecure_docker_registry_list: ["10.244.2.6:8080"]
+    insecure_docker_registry_list: ["docker-registry.service.cf.internal:8080"]
   nsync:
     log_level: debug
   receptor:
