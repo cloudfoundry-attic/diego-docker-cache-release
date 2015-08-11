@@ -50,7 +50,7 @@ as you switch in and out of the directory.
 
 1. Generate and target Diego Docker Cache's manifest:
 
-        cd ~/workspace/diego-docker-cache
+        cd ~/workspace/diego-docker-cache-release
         ./scripts/generate-deployment-manifest ~/deployments/bosh-lite/director.yml \
             manifest-generation/bosh-lite-stubs/property-overrides.yml \
             manifest-generation/bosh-lite-stubs/instance-count-overrides.yml \
