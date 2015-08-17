@@ -8,6 +8,13 @@ config_from_cf:
     staging_upload_password: (( properties.cc.staging_upload_password ))
   consul:
     lan_servers: (( properties.consul.agent.servers.lan ))
+    ca_cert: (( properties.consul.ca_cert ))
+    agent_cert: (( properties.consul.agent_cert ))
+    agent_key: (( properties.consul.agent_key ))
+    encrypt_key: (( properties.consul.encrypt_key ))
+    require_ssl: (( properties.consul.require_ssl ))
+    server_cert: (( properties.consul.server_cert ))
+    server_key: (( properties.consul.server_key ))
   system_domain: (( properties.system_domain ))
 
 # The keys below should not be included in the final stub
@@ -22,4 +29,11 @@ properties:
     agent:
       servers:
         lan: (( merge ))
+    ca_cert:
+    agent_cert:
+    agent_key:
+    encrypt_key:
+    require_ssl:
+    server_cert:
+    server_key:
   system_domain: (( merge ))
