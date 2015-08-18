@@ -1,4 +1,3 @@
----
 property_overrides:
   converger:
     log_level: debug
@@ -236,12 +235,9 @@ property_overrides:
       network: tcp
       address: 127.0.0.1:7777
     log_level: debug
-  garden-linux:
-    kernel_network_tuning_enabled: false
-    disk_quota_enabled: false
+  garden:
     listen_network: tcp
     listen_address: 0.0.0.0:7777
-    btrfs_store_size_mb: 20_000
     insecure_docker_registry_list: ["docker-registry.service.cf.internal:8080"]
   nsync:
     log_level: debug
@@ -251,6 +247,7 @@ property_overrides:
      - receptor.10.244.0.34.xip.io
     log_level: debug
   rep:
+    evacuation_timeout_in_seconds: 60
     log_level: debug
   route_emitter:
     log_level: debug
