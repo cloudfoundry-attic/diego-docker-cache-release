@@ -32,13 +32,12 @@ as you switch in and out of the directory.
 
         cd ~/workspace/diego-release
         ./scripts/generate-deployment-manifest \
-          ~/deployments/bosh-lite/director.yml \
-          ~/workspace/diego-docker-cache/stubs-for-diego-release/bosh-lite-property-overrides.yml \
+          ~/workspace/diego-docker-cache-release/stubs-for-diego-release/bosh-lite-property-overrides.yml \
           manifest-generation/bosh-lite-stubs/instance-count-overrides.yml \
           manifest-generation/bosh-lite-stubs/persistent-disk-overrides.yml \
           manifest-generation/bosh-lite-stubs/iaas-settings.yml \
           manifest-generation/bosh-lite-stubs/additional-jobs.yml \
-          ~/deployments/bosh-lite \
+          ~/workspace/cf-release/bosh-lite/deployment \
           > ~/deployments/bosh-lite/diego.yml
         bosh deployment ~/deployments/bosh-lite/diego.yml
 
@@ -57,7 +56,7 @@ as you switch in and out of the directory.
             manifest-generation/bosh-lite-stubs/persistent-disk-overrides.yml \
             manifest-generation/bosh-lite-stubs/iaas-settings.yml \
             manifest-generation/bosh-lite-stubs/additional-jobs.yml \
-            ~/deployments/bosh-lite \
+            ~/workspace/cf-release/bosh-lite/deployment \
             > ~/deployments/bosh-lite/docker-cache.yml
         bosh deployment ~/deployments/bosh-lite/docker-cache.yml
 
