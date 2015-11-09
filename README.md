@@ -37,9 +37,10 @@ as you switch in and out of the directory.
           manifest-generation/bosh-lite-stubs/persistent-disk-overrides.yml \
           manifest-generation/bosh-lite-stubs/iaas-settings.yml \
           manifest-generation/bosh-lite-stubs/additional-jobs.yml \
-          ~/workspace/cf-release/bosh-lite/deployment \
-          > ~/deployments/bosh-lite/diego.yml
-        bosh deployment ~/deployments/bosh-lite/diego.yml
+          manifest-generation/bosh-lite-stubs/release-versions.yml \
+          ~/workspace/cf-release/bosh-lite/deployments \
+          > ~/workspace/diego-release/bosh-lite/deployments/diego.yml
+        bosh deployment ~/workspace/diego-release/bosh-lite/deployments/diego.yml
 
 1. Deploy Diego:
 
@@ -50,15 +51,8 @@ as you switch in and out of the directory.
 1. Generate and target Diego Docker Cache's manifest:
 
         cd ~/workspace/diego-docker-cache-release
-        ./scripts/generate-deployment-manifest ~/deployments/bosh-lite/director.yml \
-            manifest-generation/bosh-lite-stubs/property-overrides.yml \
-            manifest-generation/bosh-lite-stubs/instance-count-overrides.yml \
-            manifest-generation/bosh-lite-stubs/persistent-disk-overrides.yml \
-            manifest-generation/bosh-lite-stubs/iaas-settings.yml \
-            manifest-generation/bosh-lite-stubs/additional-jobs.yml \
-            ~/workspace/cf-release/bosh-lite/deployment \
-            > ~/deployments/bosh-lite/docker-cache.yml
-        bosh deployment ~/deployments/bosh-lite/docker-cache.yml
+        ./scripts/generate-bosh-lite-manifest
+        bosh deployment ~/workspace/diego-docker-cache-release/bosh-lite/deployments/docker-cache.yml
 
 1. Deploy the Docker Cache:
 

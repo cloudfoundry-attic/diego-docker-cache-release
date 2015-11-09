@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+release_dir=$(dirname $0)/..
+manifest_generation=${release_dir}/manifest-generation
+mkdir -p bosh-lite/deployments/
+${release_dir}/scripts/generate-deployment-manifest \
+    ${manifest_generation}/bosh-lite-stubs/property-overrides.yml \
+    ${manifest_generation}/bosh-lite-stubs/instance-count-overrides.yml \
+    ${manifest_generation}/bosh-lite-stubs/persistent-disk-overrides.yml \
+    ${manifest_generation}/bosh-lite-stubs/iaas-settings.yml \
+    ${manifest_generation}/bosh-lite-stubs/additional-jobs.yml \
+    ${manifest_generation}/bosh-lite-stubs/release-versions.yml \
+    ~/workspace/cf-release/bosh-lite/deployments \
+    > ${release_dir}/bosh-lite/deployments/docker-cache.yml
+bosh deployment ${release_dir}/bosh-lite/deployments/docker-cache.yml
