@@ -15,10 +15,12 @@ config_from_cf:
     require_ssl: (( properties.consul.require_ssl ))
     server_cert: (( properties.consul.server_cert ))
     server_key: (( properties.consul.server_key ))
+  cf_director_uuid: (( director_uuid ))
   system_domain: (( properties.system_domain ))
 
 # The keys below should not be included in the final stub
 name: (( merge ))
+director_uuid: (( merge ))
 properties:
   cc:
     internal_api_password: (( merge ))

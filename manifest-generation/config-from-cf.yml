@@ -15,4 +15,5 @@ config_from_cf:
     require_ssl: (( merge ))
     server_cert: (( merge ))
     server_key: (( merge ))
+  cf_director_uuid: (( merge ))
   system_domain: (( merge ))

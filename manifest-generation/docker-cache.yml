@@ -1,3 +1,5 @@
+director_uuid: (( config_from_cf.cf_director_uuid ))
+
 name: (( config_from_cf.cf_deployment_name "-diego-docker-cache" ))
 
 releases: (( base_releases additional_jobs.releases ))
