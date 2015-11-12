@@ -15,7 +15,7 @@ pushd ~/workspace/diego-release
   bosh deployment ~/workspace/diego-release/bosh-lite/deployments/diego.yml
 
   bosh create release --force
-  bosh -t lite -n upload release
+  bosh -t lite -n upload release --skip-if-exists
   bosh -t lite -n -d ~/workspace/diego-release/bosh-lite/diego.yml deploy
 popd
 
@@ -23,7 +23,7 @@ pushd ~/workspace/diego-docker-cache-release
   ./scripts/generate-bosh-lite-manifest
 
   bosh create release --force
-  bosh -t lite -n upload release
+  bosh -t lite -n upload release --skip-if-exists
   bosh -t lite -n -d ~/workspace/diego-docker-cache-release/bosh-lite/deployments/docker-cache.yml deploy
 popd
 
