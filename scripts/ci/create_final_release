@@ -17,7 +17,7 @@ pushd diego-docker-cache-release
   echo "----- Create final release"
   bosh --parallel 4 -n create release --final --with-tarball --version $FINAL_RELEASE_VERSION
 
-  mv releases/diego-docker-cache/*.tgz ../diego-docker-cache-$FINAL_RELEASE_VERSION.tgz
+  mv releases/diego-docker-cache/*.tgz ../created-docker-cache-release/diego-docker-cache-$FINAL_RELEASE_VERSION.tgz
 
   echo "----- Update master and develop branches on origin"
   git add -A
@@ -26,3 +26,5 @@ pushd diego-docker-cache-release
   echo "----- DEBUG: show the commit we just created"
   git --no-pager show HEAD
 popd
+
+cp -a diego-docker-cache-release created-docker-cache-release/

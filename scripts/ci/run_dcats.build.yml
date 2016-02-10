@@ -7,6 +7,9 @@ inputs:
   - name: deployments-runtime
   - name: diego-docker-cache-release
 
+outputs:
+  - name: dcats-results
+
 params:
   BOSH_USER: ~
   BOSH_PASSWORD: ~

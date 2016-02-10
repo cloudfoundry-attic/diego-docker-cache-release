@@ -8,5 +8,8 @@ inputs:
   - name: runtime-credentials
   - name: docker-cache-version
 
+output:
+  - name: created-docker-cache-release
+
 run:
   path: diego-docker-cache-release/scripts/ci/create_final_release

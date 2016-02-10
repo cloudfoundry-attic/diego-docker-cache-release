@@ -7,5 +7,8 @@ inputs:
   - name: diego-docker-cache-release
   - name: docker-cache-version
 
+outputs:
+  - name: created-docker-cache-release
+
 run:
   path: diego-docker-cache-release/scripts/ci/create_dev_release

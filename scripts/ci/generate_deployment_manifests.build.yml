@@ -7,10 +7,13 @@ inputs:
   - name: deployments-runtime
   - name: diego-docker-cache-release
 
+outputs:
+  - name: generated-manifests
+
 params:
   BOSH_USER: ~
   BOSH_PASSWORD: ~
-  BOSH_TARGET: ~  
+  BOSH_TARGET: ~
   DEPLOYMENTS_DIR: ~
   ENVIRONMENT_NAME: ~
 

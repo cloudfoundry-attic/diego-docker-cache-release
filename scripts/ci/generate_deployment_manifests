@@ -38,5 +38,5 @@ pushd diego-docker-cache-release
     /tmp/iaas-settings.yml \
     ${stubs_path}/docker-registry/additional-jobs.yml \
     /tmp \
-    > ../diego-docker-cache-deployment.yml
+    > ../generated-manifests/diego-docker-cache-deployment.yml
 popd
