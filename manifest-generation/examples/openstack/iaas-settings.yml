@@ -14,7 +14,7 @@ iaas_settings:
       subnets:
       - range: 10.0.1.0/24
         gateway: 10.0.1.1
-        static: []
+        reserved: []
         cloud_properties:
           net_id: DIEGO_1_NET_ID
           security_groups:
