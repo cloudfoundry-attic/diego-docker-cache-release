@@ -7,6 +7,7 @@ config_from_cf:
     staging_upload_user: (( merge ))
     staging_upload_password: (( merge ))
   consul:
+    domain: (( merge ))
     lan_servers: (( merge ))
     ca_cert: (( merge ))
     agent_cert: (( merge ))
