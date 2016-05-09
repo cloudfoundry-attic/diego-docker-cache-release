@@ -49,6 +49,7 @@ properties:
   # -- Property below is used by the consul_agent job from cf-release --
   consul:
     agent:
+      domain: (( config_from_cf.consul.domain ))
       servers:
         lan: (( config_from_cf.consul.lan_servers ))
     ca_cert: (( config_from_cf.consul.ca_cert ))
