@@ -26,7 +26,7 @@ as you switch in and out of the directory.
 ---
 ## Deploying to a local BOSH-Lite instance
 
-1. Follow the instructions in [Diego Release](https://github.com/cloudfoundry-incubator/diego-release) and install CF
+1. Follow the instructions in [Diego Release](https://github.com/cloudfoundry/diego-release) and install CF
 
 1. When generating the Diego's manifest (step 9) use the following set of files instead:
 
@@ -124,7 +124,7 @@ See [docker-cache-acceptance-tests](https://github.com/cloudfoundry-incubator/do
 
 ## Caching docker image with Diego
 
-1. Install CF CLI v6.10.0+ (or follow the guide in [Migrating to Diego](https://github.com/cloudfoundry-incubator/diego-design-notes/blob/master/migrating-to-diego.md#installing-the-diego-beta-cli-plugin))
+1. Install CF CLI v6.10.0+ (or follow the guide in [Migrating to Diego](https://github.com/cloudfoundry/diego-design-notes/blob/master/migrating-to-diego.md#installing-the-diego-beta-cli-plugin))
 1. Install `diego-beta` CLI Plugin
 
         cf add-plugin-repo CF-Community http://plugins.cloudfoundry.org/
